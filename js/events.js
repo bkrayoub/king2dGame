@@ -1,14 +1,16 @@
 window.addEventListener('keydown', (event)=> {
-    console.log(event.key)
+    // console.log(event.key)
     switch (event.key) {
         case 'w':
         //jump
             if (player.velocity.y === 0) player.velocity.y = -20
         break
         case ' ':
-            //jump
-                if (player.velocity.y === 0) player.velocity.y = -20
-            break
+        //jump
+            if (player.velocity.y === 0) player.velocity.y = -20
+        break
+
+        //asdw controlle
         case 'a':
         //move to th left
         keys.a.pressed = true
@@ -19,8 +21,17 @@ window.addEventListener('keydown', (event)=> {
         break
         case 's':
         //duck or whatever
-
         break
+
+        //arrow controlle
+        case 'a':
+            //move to th left
+            keys.a.pressed = true
+            break
+            case 'd':
+            //move to th right
+            keys.d.pressed = true
+            break
     }
 })
 
