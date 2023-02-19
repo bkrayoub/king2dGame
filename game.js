@@ -54,6 +54,16 @@ const player = new Player({
     }
 })
 
+const doors = [
+    new Sprite({
+        position: {
+            x: 0,
+            y: 0,
+            imageSrc: './media/img/doorOpen.png'
+        }
+    })
+]
+
 const keys = {
     w: {
         pressed: false
@@ -81,8 +91,13 @@ function animate() {
     window.requestAnimationFrame(animate)
 
     backgroundLevel1.draw()
+
     collistionBlocks.forEach(CollisionBlock => {
         CollisionBlock.draw()
+    })
+
+    doors.forEach(door => {
+        door.draw()
     })
 
     player.velocity.x = 0
