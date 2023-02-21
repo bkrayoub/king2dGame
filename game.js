@@ -50,6 +50,15 @@ const player = new Player({
             loop: true,
             imageSrc: './media/img/king/runLeft.png',
         },
+        enterDoor: {
+            frameRate: 8,
+            frameBuffer: 4,
+            loop: false,
+            imageSrc: './media/img/king/enterDoor.png',
+            onComplete: () => {
+                console.log('completed animation')
+            },
+        },
 
     }
 })
@@ -57,10 +66,14 @@ const player = new Player({
 const doors = [
     new Sprite({
         position: {
-            x: 0,
-            y: 0,
-            imageSrc: './media/img/doorOpen.png'
-        }
+            x: 767,
+            y: 270
+        },
+        imageSrc: './media/img/doorOpen.png',
+        frameRate: 5,
+        frameBuffer: 5,
+        loop: false,
+        autoplay: false,
     })
 ]
 
@@ -100,24 +113,7 @@ function animate() {
         door.draw()
     })
 
-    player.velocity.x = 0
-
-    if (keys.d.pressed) {
-        player.switchSprite('runRight')
-        player.velocity.x = 5
-        player.lastDiraction = 'right'
-    }
-    else if (keys.a.pressed) {
-        player.switchSprite('runLeft')
-        player.velocity.x = -5
-        player.lastDiraction = 'left'
-    }
-    else {
-        if (player.lastDiraction === 'left') 
-        player.switchSprite('idleLeft')
-        else player.switchSprite('idleRight')
-    }
- 
+    player.handleInput(keys)
     player.draw()
     player.update()
 }
